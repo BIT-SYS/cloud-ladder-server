@@ -16,6 +16,7 @@ import argparse
 import captioning.utils.misc as utils
 import captioning.modules.losses as losses
 
+# 模型的初始化参数，尽可能在所有的参数中填写默认值
 # Input arguments and options
 parser = argparse.ArgumentParser()
 # Input paths
@@ -67,18 +68,23 @@ model.to(opt.device)
 model.eval()
 crit = losses.LanguageModelCriterion()
 
+# 封装inference函数
 def inference(img):
+    # 获取一个uuid，将图片保存在临时目录中
     id = str(uuid.uuid1())
     dirname = basedir + "/" + id + "/"
     os.mkdir(dirname)
     img.save(dirname + "image.png")
     opt.image_folder = dirname
 
+    # 构建一个DataLoader
     loader = DataLoaderRaw({'folder_path': opt.image_folder, 'coco_json': opt.coco_json,
                             'batch_size': opt.batch_size, 'cnn_model': opt.cnn_model})
     loader.dataset.ix_to_word = infos['vocab']
     # Set sample options
     opt.dataset = opt.input_json
+    # 进行Inference
     loss, split_predictions, lang_stats = eval_utils.eval_split(model, crit, loader, vars(opt))
     print(split_predictions[0]['caption'])
+    # 返回结果
     return split_predictions[0]['caption']
