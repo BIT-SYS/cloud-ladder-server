@@ -1,5 +1,6 @@
 from flask import Flask, request
 import model_driver.ImageCaptioning as im2text
+import model_driver.SpeechRecognition as sr
 
 
 app = Flask(__name__)
