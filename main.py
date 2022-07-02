@@ -22,7 +22,7 @@ def get_caption_text():
 @app.route('/speech_recognition', methods=['POST'])
 def get_speech():
     audio_file = request.files.get('audio')
-    lang =  request.form('lang')
+    lang =  request.form.get('lang')
     #默认是中文，支持英文en-US
     if lang is None:
         lang = 'zh-CN'
