@@ -1,15 +1,17 @@
 import speech_recognition as sr
 import io
-import base64
+import uuid
+import os
 
-def inference(b64_data,lang):
-    wav_bytes = base64.b64decode(b64_data)
+basedir = 'data/tmp'
+if not os.path.exists(basedir):
+    os.mkdir(basedir)
+
+def inference(audio,lang):
     id = str(uuid.uuid1())
     dirname = basedir + "/" + id + "/"
     os.mkdir(dirname)
-    f = open(dirname + "demo_audio.wav", 'wb')
-    f.write(wav_bytes)
-    f.close()
+    audio.save(dirname + "demo_audio.wav")
     audio_file = 'demo_audio.wav'
     r = sr.Recognizer
     with sr.AudioFile(audio_file) as source:
