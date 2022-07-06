@@ -24,9 +24,8 @@ def get_caption_text():
 def get_speech():
     audio_file = request.files.get('audio')
     lang =  request.form.get('lang')
-    #默认是中文，支持英文en-US
-    if lang is None:
-        lang = 'zh-CN'
+    if lang != 'en-US' or lang != 'zh-CN':
+        return 'warning:不支持的语言识别'
     return sr.interface(audio_file,lang)
 
 if __name__ == "__main__":
