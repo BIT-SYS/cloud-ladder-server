@@ -1,7 +1,8 @@
-import speech_recognition as sr
 import io
 import uuid
 import os
+sys.path.append("../models")
+from SpeechRecognition import speech_recognition as sr
 
 basedir = 'data/tmp'
 if not os.path.exists(basedir):
