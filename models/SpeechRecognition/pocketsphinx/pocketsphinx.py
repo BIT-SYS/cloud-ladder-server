@@ -111,7 +111,7 @@ def _swig_setattr_nondynamic_method(set):
     return set_attr
 
 
-import sphinxbase
+from .. import sphinxbase
 class Hypothesis(object):
     """Proxy of C Hypothesis struct."""
 
