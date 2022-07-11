@@ -32,7 +32,7 @@ import os
 import sys
 import signal
 from contextlib import contextmanager
-from sphinxbase import *
+from ..sphinxbase import *
 from .pocketsphinx import *
 
 
