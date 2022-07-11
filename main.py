@@ -31,4 +31,4 @@ def get_speech():
 
 if __name__ == "__main__":
     # 启动服务器，运行在5000端口上
-    app.run(debug=True,host='39.103.135.92',port=5000)
+    app.run(debug=True,host='0.0.0.0',port=5000)
