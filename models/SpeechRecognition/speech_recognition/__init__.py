@@ -726,7 +726,7 @@ class Recognizer(AudioSource):
 
         # import the PocketSphinx speech recognition module
         try:
-            from ..pocketsphinx import pocketsphinx, Jsgf, FsgModel
+            from pocketsphinx import pocketsphinx, Jsgf, FsgModel
 
         except ImportError:
             raise RequestError("missing PocketSphinx module: ensure that PocketSphinx is set up correctly.")
