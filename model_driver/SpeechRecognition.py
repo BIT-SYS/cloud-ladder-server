@@ -1,19 +1,20 @@
+import speech_recognition as sr
 import io
 import uuid
 import os
-sys.path.append("../models")
-from SpeechRecognition import speech_recognition as sr
 
-basedir = 'data/tmp'
-if not os.path.exists(basedir):
-    os.mkdir(basedir)
-
+root = 'data/'
+if not os.path.exists(root):
+    os.mkdir(root)
+subdirectory = root + 'tmp/'
+if not os.path.exists(subdirectory):
+    os.mkdir(subdirectory)
 def inference(audio,lang):
     id = str(uuid.uuid1())
-    dirname = basedir + "/" + id + "/"
+    dirname = subdirectory + "/" + id + "/"
     os.mkdir(dirname)
     audio.save(dirname + "demo_audio.wav")
-    audio_file = 'demo_audio.wav'
+    audio_file = dirname + 'demo_audio.wav'
     r = sr.Recognizer
     with sr.AudioFile(audio_file) as source:
         audio = r().record(source)
