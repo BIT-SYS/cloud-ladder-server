@@ -1,4 +1,6 @@
-import speech_recognition as sr
+import sys
+sys.path.append("models")
+from SpeechRecognition import speech_recognition as sr
 import io
 import uuid
 import os
