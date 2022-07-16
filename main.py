@@ -28,7 +28,13 @@ def get_speech():
     if (lang != 'en-US') and (lang != 'zh-CN'):
         return 'warning:不支持的语言识别'
     return sr.inference(audio_file,lang)
-
+@app.route('/voice_conversion', methods=['POST'])
+def get_audio():
+    audio_file = request.files.get('audio')
+    type =  request.form.get('aParam')
+    if (type != 'high') and (type != 'low'):
+        return 'error:请输入正确的变音指令'
+    return vc.inference(audio_file,type)
 if __name__ == "__main__":
     # 启动服务器，运行在5000端口上
     app.run(host='0.0.0.0',port=5000,debug=True)
