@@ -8,6 +8,12 @@
 #### Image Captioning 任务
 [配置文档](https://www.wolai.com/bkaoVrJGpQiiGhmQWnKQWD)
 
+#### 图片生成任务
+```bash
+pip install min-dalle
+```
+第一次启动时将会自动下载模型.
+
 ***
 # cloud-ladder server
 
@@ -20,3 +26,13 @@ to setup your local cloud-ladder server, you should clone this repository and do
 
 #### Image Captioning
 to install the image captioning model, please refer to this page [doc](https://www.wolai.com/bkaoVrJGpQiiGhmQWnKQWD).
+
+#### Text to Image
+``` bash
+pip install min-dalle
+```
+the model checkpoints as well as other necessary files will be downloaded during the first launch
+
+***
+> References
+- https://github.com/kuprel/min-dalle
