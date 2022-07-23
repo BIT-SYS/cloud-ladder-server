@@ -44,13 +44,21 @@ def get_audio():
         return 'error:请输入正确的变音指令'
     return vc.inference(audio_file,type)
 
-@app.route('/text2audio', methods=['POST'])
-def get_voice():
-    rate = request.form.get('rate')
-    volume = request.form.get('volume')
-    voice = request.form.get('voice')
-    words = request.form.get('words')
-    return send_file(text2audio.use_pyttsx3(rate, volume, voice, words),as_attachment=True)
+@app.route('/t2a', methods=['GET', 'POST'])
+def t2a():
+    if request.method == 'GET':
+        rate = request.args.get('rate')
+        volume = request.args.get('volume')
+        voice = request.args.get('voice')
+        words = request.args.get('words')
+        return send_file(main.use_pyttsx3(rate, volume, voice, words), as_attachment=True)
+    if request.method == 'POST':
+        rate = request.form.get('rate')
+        volume = request.form.get('volume')
+        voice = request.form.get('voice')
+        words = request.form.get('words')   
+        return send_file(main.use_pyttsx3(rate, volume, voice, words), as_attachment=True)
+
 
 if __name__ == "__main__":
     # 启动服务器，运行在5000端口上
