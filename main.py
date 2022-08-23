@@ -14,7 +14,7 @@ def get_test_msg():
 
 
 # 图片转文字，使用post请求上传图片，图片数据保存在image字段中
-@app.route('/im2text', methods=['POST'])
+@app.route('/inference', methods=['POST'])
 def get_caption_text():
     img = request.files.get('image')
     # 调用分装好的推理函数
